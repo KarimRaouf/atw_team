@@ -20,7 +20,7 @@ class ChatTextField extends StatelessWidget {
             border: InputBorder.none,
             hintText: 'Enter keyword',
             contentPadding:
-                const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                const EdgeInsets.symmetric(horizontal: 20, vertical:10 ),
             hintStyle: TextStyle(
                 color: Colors.white.withOpacity(0.30),
                 fontWeight: FontWeight.w500)),

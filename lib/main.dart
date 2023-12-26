@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mkag/features/chat_input/view/chat_input_screen.dart';
+import 'package:mkag/features/splash/view/splash_screen.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -40,7 +41,7 @@ class MainApp extends StatelessWidget {
           elevation: 0,
         ),
       ),
-      home: const ChatInputScreen()
+      home:  SplashScreen()
     );
   }
 }
