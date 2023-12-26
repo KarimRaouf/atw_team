@@ -9,9 +9,15 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
+      theme: ThemeData(
+        textSelectionTheme: const TextSelectionThemeData(
+          cursorColor: Colors.white, // Set your desired cursor color here
+        ),
+        useMaterial3: true,
+      ),
+      home: const Scaffold(
         body: Center(
           child: Text('Hello World!'),
         ),
