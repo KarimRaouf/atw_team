@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mkag/features/chat_input/view/chat_input_screen.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -25,6 +26,9 @@ class MainApp extends StatelessWidget {
         useMaterial3: true,
         textTheme: GoogleFonts.spaceGroteskTextTheme(
           Theme.of(context).textTheme,
+        ).apply(
+          bodyColor: Colors.white, // Default text color for body text
+          displayColor: Colors.white, // Default text color for display text
         ),
         scaffoldBackgroundColor: Colors.black,
         appBarTheme: const AppBarTheme(
@@ -36,11 +40,7 @@ class MainApp extends StatelessWidget {
           elevation: 0,
         ),
       ),
-      home: const Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+      home: const ChatInputScreen()
     );
   }
 }
