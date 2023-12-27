@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mkag/features/chat_input/view/widgets/article_type_container.dart';
 import 'package:mkag/features/chat_input/view/widgets/chat_text_field.dart';
 import 'package:mkag/features/chat_input/view_model/cubit/chat_input_cubit.dart';
 import 'package:mkag/features/chat_input/view_model/cubit/chat_input_state.dart';
+import 'package:mkag/features/chat_response/view/chat_response_screen.dart';
 
 import 'widgets/generate_button.dart';
 
@@ -86,7 +86,13 @@ class ChatInputScreen extends StatelessWidget {
                         children: [
                           const Spacer(),
                           GenerateButton(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        const ChatResponseScreen()),
+                              );
+                            },
                           ),
                         ],
                       ),
