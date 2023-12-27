@@ -16,7 +16,13 @@ class ChatInputScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => ChatInputCubit(),
       child: BlocConsumer<ChatInputCubit, ChatInputState>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          if (state is ResponseSuccessState) {
+            print("Data fetched successfully: ${state.responseData}");
+          } else if (state is ResponseErrorState) {
+            print("Error fetching data: ${state.errorMessage}");
+          }
+        },
         builder: (context, state) {
           var cubit = ChatInputCubit.get(context);
           return Scaffold(
@@ -87,11 +93,13 @@ class ChatInputScreen extends StatelessWidget {
                           const Spacer(),
                           GenerateButton(
                             onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                    builder: (BuildContext context) =>
-                                        const ChatResponseScreen()),
-                              );
+                              cubit.fetchApiData();
+
+                              // Navigator.of(context).push(
+                              //   MaterialPageRoute(
+                              //       builder: (BuildContext context) =>
+                              //           const ChatResponseScreen()),
+                              // );
                             },
                           ),
                         ],
