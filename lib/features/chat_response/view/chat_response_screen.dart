@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ChatResponseScreen extends StatelessWidget {
-  const ChatResponseScreen({super.key});
-
+  const ChatResponseScreen(
+      {super.key, required this.content, required this.type});
+  final String content;
+  final int type;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,22 +44,26 @@ class ChatResponseScreen extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          SvgPicture.asset('assets/twitter.svg'),
+                          type == 0
+                              ? SvgPicture.asset('assets/linked.svg')
+                              : type == 1
+                                  ? SvgPicture.asset('assets/twitter.svg')
+                                  : SvgPicture.asset('assets/article.svg'),
                           const SizedBox(
                             width: 16,
                           ),
-                          const Text(
-                            "Twitter",
-                            style: TextStyle(fontSize: 24),
+                           Text(
+                           type==0?"Linked In" :type==1?  "Twitter": "MKAG Article",
+                            style: const TextStyle(fontSize: 24),
                           )
                         ],
                       ),
                       const SizedBox(
                         height: 16,
                       ),
-                      const Text(
-                        "This topic explores the advancements in renewable energy technologies like solar, wind, hydro, and geothermal power. It discusses how these technologies have evolved over time and their role in promoting global sustainability by reducing carbon footprints, creating green jobs, and leading towards a more sustainable future. The text could delve into the challenges and opportunities presented by renewable energy, its economic impacts, and the policies required to support its growth.",
-                        style: TextStyle(fontSize: 16),
+                      Text(
+                        content,
+                        style: const TextStyle(fontSize: 16),
                       )
                     ],
                   ),

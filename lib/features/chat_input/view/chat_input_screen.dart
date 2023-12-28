@@ -18,7 +18,23 @@ class ChatInputScreen extends StatelessWidget {
       child: BlocConsumer<ChatInputCubit, ChatInputState>(
         listener: (context, state) {
           if (state is ResponseSuccessState) {
-            print("Data fetched successfully: ${state.responseData}");
+            print("Data fetched successfully: ${state.content}");
+
+            Future.delayed(Duration.zero, () {
+              final contentToPass =
+                  ChatInputCubit.get(context).getSelectedContent();
+              final type = ChatInputCubit.get(context).type;
+              if (contentToPass != null) {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => ChatResponseScreen(
+                      content: contentToPass,
+                      type: type,
+                    ),
+                  ),
+                );
+              }
+            });
           } else if (state is ResponseErrorState) {
             print("Error fetching data: ${state.errorMessage}");
           }
@@ -92,14 +108,19 @@ class ChatInputScreen extends StatelessWidget {
                         children: [
                           const Spacer(),
                           GenerateButton(
+                            isLoading: state is ResponseLoadingState,
                             onTap: () {
-                              cubit.fetchApiData();
-
-                              // Navigator.of(context).push(
-                              //   MaterialPageRoute(
-                              //       builder: (BuildContext context) =>
-                              //           const ChatResponseScreen()),
-                              // );
+                              if (cubit.SelectedIndex != -1 &&
+                                  state is! ResponseLoadingState) {
+                                cubit.fetchApiData();
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text(
+                                        'Please select an article type first'),
+                                  ),
+                                );
+                              }
                             },
                           ),
                         ],
