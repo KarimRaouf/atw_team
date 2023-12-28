@@ -66,7 +66,7 @@ class ChatInputScreen extends StatelessWidget {
                           const SizedBox(
                             height: 32,
                           ),
-                          const ChatTextField(),
+                           ChatTextField(cubit: cubit,),
                           const SizedBox(
                             height: 40,
                           ),
@@ -112,7 +112,7 @@ class ChatInputScreen extends StatelessWidget {
                             onTap: () {
                               if (cubit.SelectedIndex != -1 &&
                                   state is! ResponseLoadingState) {
-                                cubit.fetchApiData();
+                                cubit.fetchApiData(cubit.searchController.text);
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(

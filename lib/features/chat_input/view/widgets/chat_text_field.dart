@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:mkag/features/chat_input/view_model/cubit/chat_input_cubit.dart';
 
 class ChatTextField extends StatelessWidget {
   const ChatTextField({
-    super.key,
+    super.key, required this.cubit,
   });
-
+final ChatInputCubit cubit;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,6 +17,7 @@ class ChatTextField extends StatelessWidget {
         ),
       ),
       child: TextFormField(
+        controller:cubit.searchController ,
         decoration: InputDecoration(
             border: InputBorder.none,
             hintText: 'Enter keyword',

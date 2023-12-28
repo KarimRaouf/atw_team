@@ -26,52 +26,68 @@ class ChatResponseScreen extends StatelessWidget {
                 const SizedBox(
                   height: 88,
                 ),
-                Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF0A0000),
-                    border: Border.all(
-                      color:
-                          const Color(0xFFFF3BFF), // Set border color to pink
-                      width: 2.0, // Set border width (adjust as needed)
-                    ),
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(8.0), // Set the border radius to 8
-                    ),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          type == 0
-                              ? SvgPicture.asset('assets/linked.svg')
-                              : type == 1
-                                  ? SvgPicture.asset('assets/twitter.svg')
-                                  : SvgPicture.asset('assets/article.svg'),
-                          const SizedBox(
-                            width: 16,
-                          ),
-                           Text(
-                           type==0?"Linked In" :type==1?  "Twitter": "MKAG Article",
-                            style: const TextStyle(fontSize: 24),
-                          )
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      Text(
-                        content,
-                        style: const TextStyle(fontSize: 16),
-                      )
-                    ],
-                  ),
-                )
+                ResponseContainer(type: type, content: content)
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class ResponseContainer extends StatelessWidget {
+  const ResponseContainer({
+    super.key,
+    required this.type,
+    required this.content,
+  });
+
+  final int type;
+  final String content;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: const Color(0xFF0A0000),
+        border: Border.all(
+          color:
+              const Color(0xFFFF3BFF), // Set border color to pink
+          width: 2.0, // Set border width (adjust as needed)
+        ),
+        borderRadius: const BorderRadius.all(
+          Radius.circular(8.0), // Set the border radius to 8
+        ),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              type == 0
+                  ? SvgPicture.asset('assets/linked.svg')
+                  : type == 1
+                      ? SvgPicture.asset('assets/twitter.svg')
+                      : SvgPicture.asset('assets/article.svg'),
+              const SizedBox(
+                width: 16,
+              ),
+               Text(
+               type==0?"Linked In" :type==1?  "Twitter": "MKAG Article",
+                style: const TextStyle(fontSize: 24),
+              )
+            ],
+          ),
+          const SizedBox(
+            height: 16,
+          ),
+          Text(
+            content,
+            style: const TextStyle(fontSize: 16),
+          )
+        ],
       ),
     );
   }

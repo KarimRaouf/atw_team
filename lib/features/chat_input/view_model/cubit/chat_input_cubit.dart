@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mkag/features/chat_input/data/models/content.dart';
 import 'package:mkag/features/chat_input/view_model/cubit/chat_input_state.dart';
@@ -12,6 +13,8 @@ class ChatInputCubit extends Cubit<ChatInputState> {
     {'iconPath': 'assets/twitter.svg', 'text': 'Twitter'},
     {'iconPath': 'assets/article.svg', 'text': 'MKAG Article'},
   ];
+    final TextEditingController searchController = TextEditingController();
+
 
   int type = -1;
 
@@ -22,11 +25,11 @@ class ChatInputCubit extends Cubit<ChatInputState> {
 
   final Dio dio = Dio();
 
-  Future<void> fetchApiData() async {
+  Future<void> fetchApiData(String keyword) async {
     emit(ResponseLoadingState());
     try {
       final response = await dio.get('http://164.92.125.73:8000/mkag/search',
-          data: {"prompt": "Flutter"});
+          data: {"prompt": keyword});
 
       if (response.data != null && response.data is Map<String, dynamic>) {
         final apiResponse = Content.fromJson(response.data);
