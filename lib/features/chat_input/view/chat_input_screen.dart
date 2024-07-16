@@ -47,86 +47,62 @@ class ChatInputScreen extends StatelessWidget {
                 child: Padding(
                   padding:
                       const EdgeInsets.only(left: 16, right: 16, bottom: 60),
-                  child: CustomScrollView(slivers: [
-                    SliverToBoxAdapter(
-                      child: Column(
-                        children: [
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Image.asset(
-                            'assets/logo1.png',
-                            width: 50,
-                            height: 50,
-                          ),
-                          const SizedBox(
-                            height: 32,
-                          ),
-                          const Text("Enter Your Article Key Word"),
-                          const SizedBox(
-                            height: 32,
-                          ),
-                           ChatTextField(cubit: cubit,),
-                          const SizedBox(
-                            height: 40,
-                          ),
-                          const Text("Choose Your Article Type"),
-                          const SizedBox(
-                            height: 32,
-                          ),
-                          ListView.separated(
-                            shrinkWrap: true,
-                            itemCount: cubit.items.length,
-                            itemBuilder: (context, index) {
-                              var type = cubit.items[index];
-                              return ArticleTypeContainer(
-                                iconPath: type['iconPath']!,
-                                type: type['text']!,
-                                onTap: () {
-                                  cubit.selectType(index);
-                                },
-                                isSelected: cubit.SelectedIndex == index,
+                  child: SingleChildScrollView(
+                    physics: BouncingScrollPhysics(),
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 10),
+                        Image.asset(
+                          'assets/atwlogo.png',
+                          width: 150,
+                          height: 100,
+                        ),
+                        const SizedBox(height: 32),
+                        const Text("Enter Your Query"),
+                        const SizedBox(height: 32),
+                        ChatTextField(cubit: cubit),
+                        const SizedBox(height: 40),
+                        const Text("Choose Which Type of Response You Want"),
+                        const SizedBox(height: 32),
+                        ListView.separated(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: cubit.items.length,
+                          itemBuilder: (context, index) {
+                            var type = cubit.items[index];
+                            return ArticleTypeContainer(
+                              iconPath: type['iconPath']!,
+                              type: type['text']!,
+                              onTap: () {
+                                cubit.selectType(index);
+                              },
+                              isSelected: cubit.SelectedIndex == index,
+                            );
+                          },
+                          separatorBuilder: (BuildContext context, int index) {
+                            return const SizedBox(height: 32);
+                          },
+                        ),
+                        const SizedBox(height: 60),
+                        GenerateButton(
+                          isLoading: state is ResponseLoadingState,
+                          onTap: () {
+                            if (cubit.SelectedIndex != -1 &&
+                                state is! ResponseLoadingState) {
+                              cubit.fetchApiData(cubit.searchController.text);
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text(
+                                      'Please select an article type first'),
+                                ),
                               );
-                            },
-                            separatorBuilder:
-                                (BuildContext context, int index) {
-                              return const SizedBox(
-                                height: 32,
-                              );
-                            },
-                          ),
-                          const SizedBox(
-                            height: 60,
-                          )
-                        ],
-                      ),
+                            }
+                          },
+                        ),
+                      ],
                     ),
-                    SliverFillRemaining(
-                      hasScrollBody: false,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          const Spacer(),
-                          GenerateButton(
-                            isLoading: state is ResponseLoadingState,
-                            onTap: () {
-                              if (cubit.SelectedIndex != -1 &&
-                                  state is! ResponseLoadingState) {
-                                cubit.fetchApiData(cubit.searchController.text);
-                              } else {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content: Text(
-                                        'Please select an article type first'),
-                                  ),
-                                );
-                              }
-                            },
-                          ),
-                        ],
-                      ),
-                    )
-                  ]),
+                  ),
                 ),
               ),
             ),

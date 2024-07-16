@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Center(
         child: Image.asset(
-          'assets/logo1.png',
+          'assets/atwlogo.png',
           width: 400,
           height: 400,
         ), // Replace with your asset image

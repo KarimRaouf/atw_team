@@ -3,9 +3,10 @@ import 'package:mkag/features/chat_input/view_model/cubit/chat_input_cubit.dart'
 
 class ChatTextField extends StatelessWidget {
   const ChatTextField({
-    super.key, required this.cubit,
+    super.key,
+    required this.cubit,
   });
-final ChatInputCubit cubit;
+  final ChatInputCubit cubit;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,12 +18,16 @@ final ChatInputCubit cubit;
         ),
       ),
       child: TextFormField(
-        controller:cubit.searchController ,
+        controller: cubit.searchController,
         decoration: InputDecoration(
+            suffixIcon: IconButton(
+                onPressed: () {},
+                color: Color.fromARGB(255, 95, 205, 248),
+                icon: Icon(Icons.mic)),
             border: InputBorder.none,
-            hintText: 'Enter keyword',
+            hintText: 'Enter Query',
             contentPadding:
-                const EdgeInsets.symmetric(horizontal: 20, vertical:10 ),
+                const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             hintStyle: TextStyle(
                 color: Colors.white.withOpacity(0.30),
                 fontWeight: FontWeight.w500)),

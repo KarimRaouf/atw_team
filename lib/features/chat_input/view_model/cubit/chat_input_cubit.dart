@@ -9,12 +9,11 @@ class ChatInputCubit extends Cubit<ChatInputState> {
   static ChatInputCubit get(context) => BlocProvider.of(context);
   int SelectedIndex = -1;
   final List<Map<String, String>> items = [
-    {'iconPath': 'assets/linked.svg', 'text': 'Linked In'},
-    {'iconPath': 'assets/twitter.svg', 'text': 'Twitter'},
-    {'iconPath': 'assets/article.svg', 'text': 'MKAG Article'},
+    {'iconPath': '', 'text': 'Article'},
+    {'iconPath': '', 'text': 'Enquire'},
+    {'iconPath': '', 'text': 'Question'},
   ];
-    final TextEditingController searchController = TextEditingController();
-
+  final TextEditingController searchController = TextEditingController();
 
   int type = -1;
 

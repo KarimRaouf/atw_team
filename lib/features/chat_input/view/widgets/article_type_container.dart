@@ -24,8 +24,10 @@ class ArticleTypeContainer extends StatelessWidget {
           color: Colors.black,
           shape: RoundedRectangleBorder(
             side: BorderSide(
-                width: 0.50,
-                color: isSelected ? Color(0xFFFF3BFF) : Colors.white),
+                width: 3,
+                color: isSelected
+                    ? Color.fromARGB(255, 95, 205, 248)
+                    : Colors.white),
             borderRadius: BorderRadius.circular(8),
           ),
         ),
@@ -39,7 +41,9 @@ class ArticleTypeContainer extends StatelessWidget {
               type,
               style: TextStyle(
                   fontSize: 24,
-                  color: isSelected ? Color(0xFF7A309F) : Colors.white),
+                  color: isSelected
+                      ? Color.fromARGB(255, 95, 205, 248)
+                      : Colors.white),
             )
           ],
         ),
