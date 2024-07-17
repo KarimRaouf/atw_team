@@ -16,7 +16,12 @@ class GenerateButton extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 24),
         decoration: ShapeDecoration(
-          color: Color.fromARGB(255, 95, 205, 248),
+          image: const DecorationImage(
+              image: AssetImage('assets/background.jpg'),
+              fit: BoxFit.cover,
+              colorFilter: ColorFilter.mode(
+                  Color.fromARGB(255, 113, 207, 244), BlendMode.color)),
+          color: const Color.fromARGB(255, 113, 207, 244),
           shape: RoundedRectangleBorder(
             side: const BorderSide(
                 width: 2, color: Color.fromARGB(255, 95, 205, 248)),

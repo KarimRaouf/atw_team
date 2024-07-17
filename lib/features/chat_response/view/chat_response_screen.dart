@@ -19,12 +19,12 @@ class ChatResponseScreen extends StatelessWidget {
             child: Column(
               children: [
                 Image.asset(
-                  'assets/logo1.png',
-                  width: 50,
-                  height: 50,
+                  'assets/atwlogo.png',
+                  width: 200,
+                  height: 150,
                 ),
                 const SizedBox(
-                  height: 88,
+                  height: 20,
                 ),
                 ResponseContainer(type: type, content: content)
               ],
@@ -51,10 +51,12 @@ class ResponseContainer extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFF0A0000),
+        color: const Color.fromARGB(255, 113, 207, 244),
+        image: const DecorationImage(
+            image: AssetImage('assets/background.jpg'), fit: BoxFit.cover),
         border: Border.all(
-          color:
-              const Color(0xFFFF3BFF), // Set border color to pink
+          color: const Color.fromARGB(
+              255, 113, 207, 244), // Set border color to pink
           width: 2.0, // Set border width (adjust as needed)
         ),
         borderRadius: const BorderRadius.all(
@@ -66,16 +68,20 @@ class ResponseContainer extends StatelessWidget {
         children: [
           Row(
             children: [
-              type == 0
-                  ? SvgPicture.asset('assets/linked.svg')
-                  : type == 1
-                      ? SvgPicture.asset('assets/twitter.svg')
-                      : SvgPicture.asset('assets/article.svg'),
+              // type == 0
+              //     ? SvgPicture.asset('assets/linked.svg')
+              //     : type == 1
+              //         ? SvgPicture.asset('assets/twitter.svg')
+              //         : SvgPicture.asset('assets/article.svg'),
               const SizedBox(
                 width: 16,
               ),
-               Text(
-               type==0?"Linked In" :type==1?  "Twitter": "MKAG Article",
+              Text(
+                type == 0
+                    ? "Here's Your Article!"
+                    : type == 1
+                        ? "Here's Your Enquiry!"
+                        : "Here's Your Answer!",
                 style: const TextStyle(fontSize: 24),
               )
             ],

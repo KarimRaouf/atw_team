@@ -26,9 +26,9 @@ class ArticleTypeContainer extends StatelessWidget {
             side: BorderSide(
                 width: 3,
                 color: isSelected
-                    ? Color.fromARGB(255, 95, 205, 248)
+                    ? const Color.fromARGB(255, 95, 205, 248)
                     : Colors.white),
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(20),
           ),
         ),
         child: Row(
@@ -42,7 +42,7 @@ class ArticleTypeContainer extends StatelessWidget {
               style: TextStyle(
                   fontSize: 24,
                   color: isSelected
-                      ? Color.fromARGB(255, 95, 205, 248)
+                      ? const Color.fromARGB(255, 95, 205, 248)
                       : Colors.white),
             )
           ],
