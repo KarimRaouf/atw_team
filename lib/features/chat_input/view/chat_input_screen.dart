@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+<<<<<<< HEAD
 import 'package:flutter_svg/flutter_svg.dart';
+=======
+>>>>>>> voice_document
 import 'package:mkag/features/chat_input/view/widgets/article_type_container.dart';
 import 'package:mkag/features/chat_input/view/widgets/chat_text_field.dart';
 import 'package:mkag/features/chat_input/view_model/cubit/chat_input_cubit.dart';
@@ -14,6 +17,7 @@ class ChatInputScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
     return BlocProvider(
       create: (context) => ChatInputCubit(),
       child: BlocConsumer<ChatInputCubit, ChatInputState>(
@@ -178,13 +182,93 @@ class ChatInputScreen extends StatelessWidget {
                       //     return const SizedBox(height: 32);
                       //   },
                       // ),
+=======
+    return BlocConsumer<ChatInputCubit, ChatInputState>(
+      listener: (context, state) {
+        if (state is ResponseSuccessState) {
+          print("Data fetched successfully: ${state.content}");
+
+          Future.delayed(Duration.zero, () {
+            final contentToPass =
+                ChatInputCubit.get(context).getSelectedContent();
+            final type = ChatInputCubit.get(context).type;
+            if (contentToPass != null) {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext context) => ChatResponseScreen(
+                    content: contentToPass,
+                    type: type,
+                  ),
+                ),
+              );
+            }
+          });
+        } else if (state is ResponseErrorState) {
+          print("Error fetching data: ${state.errorMessage}");
+        }
+      },
+      builder: (context, state) {
+        var cubit = ChatInputCubit.get(context);
+        return Scaffold(
+          body: SafeArea(
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 16, right: 16, bottom: 60),
+                child: SingleChildScrollView(
+                  physics: BouncingScrollPhysics(),
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 10),
+                      Image.asset(
+                        'assets/atwlogo.png',
+                        width: 150,
+                        height: 100,
+                      ),
+                      const SizedBox(height: 32),
+                      const Text("Enter Your Query"),
+                      const SizedBox(height: 32),
+                      ChatTextField(cubit: cubit),
+                      const SizedBox(height: 40),
+                      const Text("Choose Which Type of Response You Want"),
+                      const SizedBox(height: 32),
+                      ListView.separated(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: cubit.items.length,
+                        itemBuilder: (context, index) {
+                          var type = cubit.items[index];
+                          return ArticleTypeContainer(
+                            iconPath: type['iconPath']!,
+                            type: type['text']!,
+                            onTap: () {
+                              cubit.selectType(index);
+                            },
+                            isSelected: cubit.SelectedIndex == index,
+                          );
+                        },
+                        separatorBuilder: (BuildContext context, int index) {
+                          return const SizedBox(height: 32);
+                        },
+                      ),
+>>>>>>> voice_document
                       const SizedBox(height: 60),
                       GenerateButton(
                         isLoading: state is ResponseLoadingState,
                         onTap: () {
                           if (cubit.SelectedIndex != -1 &&
                               state is! ResponseLoadingState) {
+<<<<<<< HEAD
                             cubit.fetchApiData(cubit.searchController.text);
+=======
+                            if (cubit.SelectedIndex == 0) {
+                              cubit.fetchApiData(cubit.searchController.text);
+                            } else if (cubit.SelectedIndex == 1) {
+                              cubit.fetchHrDocumentQuestion(
+                                  'Who is the most absences employee?');
+                            } else {
+                              cubit.requestChatGPT();
+                            }
+>>>>>>> voice_document
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
@@ -200,9 +284,15 @@ class ChatInputScreen extends StatelessWidget {
                 ),
               ),
             ),
+<<<<<<< HEAD
           );
         },
       ),
+=======
+          ),
+        );
+      },
+>>>>>>> voice_document
     );
   }
 }

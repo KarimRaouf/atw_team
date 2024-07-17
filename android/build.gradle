@@ -1,5 +1,9 @@
 buildscript {
+<<<<<<< HEAD
     ext.kotlin_version = '1.7.10'
+=======
+    ext.kotlin_version = '2.0.0'
+>>>>>>> voice_document
     repositories {
         google()
         mavenCentral()

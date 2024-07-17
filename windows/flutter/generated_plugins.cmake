@@ -3,6 +3,10 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+<<<<<<< HEAD
+=======
+  flutter_tts
+>>>>>>> voice_document
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST

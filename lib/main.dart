@@ -6,6 +6,10 @@ import 'package:mkag/features/chat_input/view/chat_input_screen.dart';
 import 'package:mkag/features/chat_input/view_model/cubit/chat_input_cubit.dart';
 import 'package:mkag/features/splash/view/splash_screen.dart';
 
+import 'package:mkag/shared/services/speech_to_text_service.dart';
+import 'package:mkag/shared/services/text_to_speech_service.dart';
+import 'package:speech_to_text/speech_to_text.dart';
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(
@@ -14,6 +18,8 @@ void main() {
         statusBarIconBrightness: Brightness.light),
   );
 
+  SpeechToTextService.initSpeech();
+  TextToSpeechService.initTTS();
   runApp(const MainApp());
 }
 

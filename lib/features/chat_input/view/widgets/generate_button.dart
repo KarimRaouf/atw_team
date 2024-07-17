@@ -20,7 +20,11 @@ class GenerateButton extends StatelessWidget {
               image: AssetImage('assets/background.jpg'),
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
+<<<<<<< HEAD
                   Color.fromARGB(255, 70, 219, 242), BlendMode.color)),
+=======
+                  Color.fromARGB(255, 113, 207, 244), BlendMode.color)),
+>>>>>>> voice_document
           color: const Color.fromARGB(255, 113, 207, 244),
           shape: RoundedRectangleBorder(
             side: const BorderSide(
@@ -36,7 +40,11 @@ class GenerateButton extends StatelessWidget {
                     valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                   )
                 : const Text(
+<<<<<<< HEAD
                     "Generate",
+=======
+                    "Generate Your Article",
+>>>>>>> voice_document
                     style: TextStyle(fontSize: 20),
                   )
           ],

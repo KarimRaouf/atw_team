@@ -31,6 +31,10 @@ migrate_working_dir/
 .pub/
 /build/
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> voice_document
 # Symbolication related
 app.*.symbols
 
