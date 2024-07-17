@@ -25,7 +25,7 @@ class ArticleTypeContainer extends StatelessWidget {
             side: BorderSide(
                 width: 3,
                 color: isSelected
-                    ? Color.fromARGB(255, 148, 220, 248)
+                    ? const Color.fromARGB(255, 148, 220, 248)
                     : Colors.white),
             borderRadius: BorderRadius.circular(20),
           ),

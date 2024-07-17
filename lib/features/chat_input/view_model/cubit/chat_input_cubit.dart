@@ -10,7 +10,7 @@ class ChatInputCubit extends Cubit<ChatInputState> {
   int SelectedIndex = -1;
   final List<Map<String, String>> items = [
     {'iconPath': '', 'text': 'Article'},
-    {'iconPath': '', 'text': 'Enquire'},
+    {'iconPath': '', 'text': 'Enquiry'},
     {'iconPath': '', 'text': 'Question'},
   ];
   final TextEditingController searchController = TextEditingController();
