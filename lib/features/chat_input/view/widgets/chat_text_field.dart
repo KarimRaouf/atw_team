@@ -22,8 +22,8 @@ class ChatTextField extends StatelessWidget {
         decoration: InputDecoration(
             suffixIcon: IconButton(
                 onPressed: () {},
-                color: const Color.fromARGB(255, 95, 205, 248),
-                icon: Icon(Icons.mic)),
+                color: const Color.fromARGB(255, 70, 219, 242),
+                icon: const Icon(Icons.mic)),
             border: InputBorder.none,
             hintText: 'Enter Query',
             contentPadding:

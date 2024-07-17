@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class ChatResponseScreen extends StatelessWidget {
   const ChatResponseScreen(
@@ -51,9 +50,13 @@ class ResponseContainer extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 113, 207, 244),
+        color: const Color.fromARGB(255, 66, 233, 245),
         image: const DecorationImage(
-            image: AssetImage('assets/background.jpg'), fit: BoxFit.cover),
+          image: AssetImage('assets/background.jpg'),
+          fit: BoxFit.cover,
+          colorFilter: ColorFilter.mode(
+              Color.fromARGB(255, 70, 219, 242), BlendMode.color),
+        ),
         border: Border.all(
           color: const Color.fromARGB(
               255, 113, 207, 244), // Set border color to pink

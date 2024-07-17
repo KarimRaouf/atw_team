@@ -46,9 +46,9 @@ class ChatInputScreen extends StatelessWidget {
               child: Center(
                 child: Padding(
                   padding:
-                      const EdgeInsets.only(left: 16, right: 16, bottom: 60),
+                      const EdgeInsets.only(left: 16, right: 16, bottom: 10),
                   child: SingleChildScrollView(
-                    physics: BouncingScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     child: Column(
                       children: [
                         const SizedBox(height: 10),

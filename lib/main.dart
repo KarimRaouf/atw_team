@@ -19,30 +19,28 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        textSelectionTheme: const TextSelectionThemeData(
-          cursorColor: Colors.white, // Set your desired cursor color here
-        ),
-        useMaterial3: true,
-        textTheme: GoogleFonts.spaceGroteskTextTheme(
-          Theme.of(context).textTheme,
-        ).apply(
-          bodyColor: Colors.white, // Default text color for body text
-          displayColor: Colors.white, // Default text color for display text
-        ),
-        scaffoldBackgroundColor: Colors.black,
-        appBarTheme: const AppBarTheme(
-          backgroundColor: 
-          Colors.black,
-          titleSpacing: 0,
-          iconTheme: IconThemeData(
-            color: Colors.white,
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          textSelectionTheme: const TextSelectionThemeData(
+            cursorColor: Colors.white, // Set your desired cursor color here
           ),
-          elevation: 0,
+          useMaterial3: true,
+          textTheme: GoogleFonts.spaceGroteskTextTheme(
+            Theme.of(context).textTheme,
+          ).apply(
+            bodyColor: Colors.white, // Default text color for body text
+            displayColor: Colors.white, // Default text color for display text
+          ),
+          scaffoldBackgroundColor: Colors.black,
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.black,
+            titleSpacing: 0,
+            iconTheme: IconThemeData(
+              color: Colors.white,
+            ),
+            elevation: 0,
+          ),
         ),
-      ),
-      home:  SplashScreen()
-    );
+        home: SplashScreen());
   }
 }

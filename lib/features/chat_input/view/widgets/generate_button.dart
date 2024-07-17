@@ -20,7 +20,7 @@ class GenerateButton extends StatelessWidget {
               image: AssetImage('assets/background.jpg'),
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
-                  Color.fromARGB(255, 113, 207, 244), BlendMode.color)),
+                  Color.fromARGB(255, 70, 219, 242), BlendMode.color)),
           color: const Color.fromARGB(255, 113, 207, 244),
           shape: RoundedRectangleBorder(
             side: const BorderSide(
