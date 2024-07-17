@@ -15,7 +15,7 @@ class ChatInputCubit extends Cubit<ChatInputState> {
   ];
   final TextEditingController searchController = TextEditingController();
 
-  int type = -1;
+  int index = -1;
 
   void selectType(int index) {
     SelectedIndex = index;
@@ -47,13 +47,13 @@ class ChatInputCubit extends Cubit<ChatInputState> {
       ResponseSuccessState currentState = state as ResponseSuccessState;
       switch (SelectedIndex) {
         case 0:
-          type = 0;
+          index = 0;
           return currentState.content.linkedInContent;
         case 1:
-          type = 1;
+          index = 2;
           return currentState.content.twitterContent;
         case 2:
-          type = 2;
+          index = 1;
           return currentState.content.articleContent;
         default:
           return null;

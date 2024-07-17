@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class ArticleTypeContainer extends StatelessWidget {
   const ArticleTypeContainer({
     super.key,
-    required this.iconPath,
-    required this.type,
+    required this.text,
+    required this.index,
     required this.onTap,
     this.isSelected = false,
   });
-  final String iconPath;
-  final String type;
+  final String? text;
+  final int index;
   final Function() onTap;
   final bool isSelected;
 
@@ -18,7 +18,9 @@ class ArticleTypeContainer extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 24),
+        height: 50,
+        width: 131,
+        // padding: const EdgeInsets.symmetric(horizontal: 42, vertical: 16),
         decoration: ShapeDecoration(
           color: Colors.black,
           shape: RoundedRectangleBorder(
@@ -34,9 +36,9 @@ class ArticleTypeContainer extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              type,
+              '$text',
               style: TextStyle(
-                  fontSize: 24,
+                  fontSize: 10,
                   color: isSelected
                       ? const Color.fromARGB(255, 95, 205, 248)
                       : Colors.white),

@@ -36,7 +36,7 @@ class GenerateButton extends StatelessWidget {
                     valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                   )
                 : const Text(
-                    "Generate Your Article",
+                    "Generate",
                     style: TextStyle(fontSize: 20),
                   )
           ],

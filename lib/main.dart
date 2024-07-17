@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mkag/features/chat_input/view/chat_input_screen.dart';
+import 'package:mkag/features/chat_input/view_model/cubit/chat_input_cubit.dart';
 import 'package:mkag/features/splash/view/splash_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
         statusBarColor: Colors.black,
         statusBarIconBrightness: Brightness.light),
   );
+
   runApp(const MainApp());
 }
 
@@ -18,7 +22,13 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => ChatInputCubit(),
+        ),
+      ],
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           textSelectionTheme: const TextSelectionThemeData(
@@ -41,6 +51,8 @@ class MainApp extends StatelessWidget {
             elevation: 0,
           ),
         ),
-        home: SplashScreen());
+        home: SplashScreen(),
+      ),
+    );
   }
 }
