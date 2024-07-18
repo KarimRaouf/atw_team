@@ -43,7 +43,7 @@ abstract class TextToSpeechService {
             ],
             IosTextToSpeechAudioMode.voicePrompt);
 
-        await _flutterTts.setSpeechRate(0.58);
+        await _flutterTts.setSpeechRate(0.52);
 
         await _flutterTts.awaitSpeakCompletion(true);
         await _flutterTts.awaitSynthCompletion(true);

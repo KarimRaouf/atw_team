@@ -63,6 +63,7 @@ class ChatInputCubit extends Cubit<ChatInputState> {
   Future<void> fetchHrDocumentQuestion(String question) async {
     emit(ResponseLoadingState());
     try {
+      TextToSpeechService.speak(text: AppStrings.waitForEnquiry);
       final response = await dio.post(
         'http://164.92.125.73:8000/documentretrieving/resultv1/hr',
         data: {"question": question},

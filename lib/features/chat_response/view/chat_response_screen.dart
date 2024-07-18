@@ -116,6 +116,11 @@ class ResponseContainer extends StatelessWidget {
             Text(
               content,
               style: const TextStyle(fontSize: 16),
+            ),
+            SizedBox(height: 8,),
+            Text(
+              'Thanks 😃',
+              style: const TextStyle(fontSize: 36,fontWeight: FontWeight.bold),
             )
           ],
         ),
