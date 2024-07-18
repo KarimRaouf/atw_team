@@ -17,3 +17,5 @@ class ResponseErrorState extends ChatInputState {
   final String errorMessage;
   ResponseErrorState(this.errorMessage);
 }
+
+class ChangeTextColorState extends ChatInputState{}

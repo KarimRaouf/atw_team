@@ -46,13 +46,12 @@ class ChatInputScreen extends StatelessWidget {
       builder: (context, state) {
         ChatInputCubit cubit = ChatInputCubit();
         cubit = ChatInputCubit.get(context);
-        var type = cubit.items;
         bool isSelected = false;
 
         return Scaffold(
           body: SafeArea(
             child: Padding(
-              padding: const EdgeInsets.only(left: 10, right: 10, bottom: 5),
+              padding: const EdgeInsets.only(left: 5, right: 5, bottom: 5),
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
                 child: Column(
@@ -83,8 +82,9 @@ class ChatInputScreen extends StatelessWidget {
                     const SizedBox(height: 55),
                     RichText(
                       textAlign: TextAlign.center,
-                      text: const TextSpan(
+                      text: TextSpan(
                         style: TextStyle(
+                          color: cubit.textColor,
                           fontSize: 20,
                         ),
                         text: "Select a Type of Response",
@@ -131,8 +131,8 @@ class ChatInputScreen extends StatelessWidget {
                             },
                             isSelected: cubit.SelectedIndex == 1,
                           ),
-                          SizedBox(
-                            width: 45,
+                          const SizedBox(
+                            width: 30,
                           ),
                           ArticleTypeContainer(
                             index: 2,
@@ -209,7 +209,8 @@ class ChatInputScreen extends StatelessWidget {
                                 text: AppStrings.selectOptions);
                           } else {
                             TextToSpeechService.speak(
-                                text: AppStrings.writeOrVoice,);
+                              text: AppStrings.writeOrVoice,
+                            );
                           }
                         }
                       },
