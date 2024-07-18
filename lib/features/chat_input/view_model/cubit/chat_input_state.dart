@@ -9,7 +9,7 @@ final class TypeSelectedState extends ChatInputState {}
 class ResponseLoadingState extends ChatInputState {}
 
 class ResponseSuccessState extends ChatInputState {
-   final Content content;
+   final String content;
   ResponseSuccessState(this.content);
 }
 

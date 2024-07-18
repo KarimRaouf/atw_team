@@ -32,7 +32,7 @@ class SpeechToTextService {
     isFinalResultWords(result: result);
 
     if (isFinalResult) {
-      TextToSpeechService.speak(text: AppStrings.selectOptions);
+      TextToSpeechService.speak(text: AppStrings.selectOptions2);
     }
   }
 

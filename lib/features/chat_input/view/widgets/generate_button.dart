@@ -11,7 +11,7 @@ class GenerateButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: isLoading ? null : onTap,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 24),
@@ -20,16 +20,12 @@ class GenerateButton extends StatelessWidget {
               image: AssetImage('assets/background.jpg'),
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
-<<<<<<< HEAD
                   Color.fromARGB(255, 70, 219, 242), BlendMode.color)),
-=======
-                  Color.fromARGB(255, 113, 207, 244), BlendMode.color)),
->>>>>>> voice_document
           color: const Color.fromARGB(255, 113, 207, 244),
           shape: RoundedRectangleBorder(
             side: const BorderSide(
                 width: 2, color: Color.fromARGB(255, 95, 205, 248)),
-            borderRadius: BorderRadius.circular(100),
+            borderRadius: BorderRadius.circular(20),
           ),
         ),
         child: Row(
@@ -37,16 +33,12 @@ class GenerateButton extends StatelessWidget {
           children: [
             isLoading
                 ? const CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                  )
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+            )
                 : const Text(
-<<<<<<< HEAD
-                    "Generate",
-=======
-                    "Generate Your Article",
->>>>>>> voice_document
-                    style: TextStyle(fontSize: 20),
-                  )
+              "Generate",
+              style: TextStyle(fontSize: 20),
+            )
           ],
         ),
       ),
