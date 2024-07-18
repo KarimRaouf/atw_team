@@ -35,9 +35,16 @@ class ChatInputCubit extends Cubit<ChatInputState> {
       final response = await dio.get('http://164.92.125.73:8000/mkag/search',
           data: {"prompt": keyword});
 
+
+      resetInputs();
+
       if (response.data != null && response.data is Map<String, dynamic>) {
         final apiResponse = Content.fromJson(response.data);
         print(response.data);
+        selectType(1);
+        
+        TextToSpeechService.speak(text: AppStrings.article);
+
         emit(ResponseSuccessState(apiResponse.articleContent!));
       } else {
         emit(ResponseErrorState("Invalid data format"));
@@ -47,6 +54,12 @@ class ChatInputCubit extends Cubit<ChatInputState> {
     }
   }
 
+
+  void resetInputs(){
+    SpeechToTextService.recognizedWords = '';
+    searchController.clear();
+  }
+
   Future<void> fetchHrDocumentQuestion(String question) async {
     emit(ResponseLoadingState());
     try {
@@ -54,10 +67,16 @@ class ChatInputCubit extends Cubit<ChatInputState> {
         'http://164.92.125.73:8000/documentretrieving/resultv1/hr',
         data: {"question": question},
       );
+      resetInputs();
+
+
 
       if (response.data != null && response.data is Map<String, dynamic>) {
         //final apiResponse = Content.fromJson(response.data);
         print(response.data);
+        selectType(0);
+        TextToSpeechService.speak(text: AppStrings.enquiry);
+
         emit(ResponseSuccessState(response.data['Answer']));
 
       } else {
@@ -92,10 +111,13 @@ class ChatInputCubit extends Cubit<ChatInputState> {
     emit(ResponseLoadingState());
 
     OpenAISercive.isArtPromptAPI(text).then((_) {
+      TextToSpeechService.speak(text: AppStrings.answer);
       emit(ResponseSuccessState(response));
     }).catchError((e){
       emit(ResponseErrorState(e.toString()));
 
     });
+    resetInputs();
+
   }
 }
