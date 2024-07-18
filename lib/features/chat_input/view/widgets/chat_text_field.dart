@@ -23,6 +23,9 @@ class ChatTextField extends StatelessWidget {
         ),
       ),
       child: TextFormField(
+        onChanged: (text) {
+          cubit.changeTextColor();
+        },
         controller: cubit.searchController,
         decoration: InputDecoration(
             suffixIcon: IconButton(
@@ -30,7 +33,7 @@ class ChatTextField extends StatelessWidget {
                 await SpeechToTextService.startListening().then((_) {});
               },
               color: const Color.fromARGB(255, 95, 205, 248),
-              icon: Icon(Icons.mic),
+              icon: const Icon(Icons.mic),
             ),
             border: InputBorder.none,
             hintText: 'Enter Query',

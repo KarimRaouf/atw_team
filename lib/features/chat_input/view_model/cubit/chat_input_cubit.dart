@@ -35,14 +35,13 @@ class ChatInputCubit extends Cubit<ChatInputState> {
       final response = await dio.get('http://164.92.125.73:8000/mkag/search',
           data: {"prompt": keyword});
 
-
       resetInputs();
 
       if (response.data != null && response.data is Map<String, dynamic>) {
         final apiResponse = Content.fromJson(response.data);
         print(response.data);
         selectType(1);
-        
+
         TextToSpeechService.speak(text: AppStrings.article);
 
         emit(ResponseSuccessState(apiResponse.articleContent!));
@@ -54,10 +53,9 @@ class ChatInputCubit extends Cubit<ChatInputState> {
     }
   }
 
-
-  void resetInputs(){
+  void resetInputs() {
     SpeechToTextService.recognizedWords = '';
-    searchController.clear();
+    searchController!.clear();
   }
 
   Future<void> fetchHrDocumentQuestion(String question) async {
@@ -70,8 +68,6 @@ class ChatInputCubit extends Cubit<ChatInputState> {
       );
       resetInputs();
 
-
-
       if (response.data != null && response.data is Map<String, dynamic>) {
         //final apiResponse = Content.fromJson(response.data);
         print(response.data);
@@ -79,7 +75,6 @@ class ChatInputCubit extends Cubit<ChatInputState> {
         TextToSpeechService.speak(text: AppStrings.enquiry);
 
         emit(ResponseSuccessState(response.data['Answer']));
-
       } else {
         emit(ResponseErrorState("Invalid data format"));
       }
@@ -114,11 +109,20 @@ class ChatInputCubit extends Cubit<ChatInputState> {
     OpenAISercive.isArtPromptAPI(text).then((_) {
       TextToSpeechService.speak(text: AppStrings.answer);
       emit(ResponseSuccessState(response));
-    }).catchError((e){
+    }).catchError((e) {
       emit(ResponseErrorState(e.toString()));
-
     });
     resetInputs();
+  }
 
+  Color textColor = Colors.white;
+  void changeTextColor() {
+    if (searchController.text.isEmpty) {
+      textColor = Colors.white;
+      emit(ChangeTextColorState());
+    } else {
+      textColor = const Color.fromARGB(255, 95, 205, 248);
+      emit(ChangeTextColorState());
+    }
   }
 }

@@ -15,10 +15,11 @@ class ChatResponseScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return PopScope(
       onPopInvoked: (cubit) {
+        ChatInputCubit.get(context).changeTextColor();
         ChatInputCubit.get(context).searchController.clear();
         ChatInputCubit.get(context).SelectedIndex = -1;
-        response ='';
-        SpeechToTextService.recognizedWords='';
+        response = '';
+        SpeechToTextService.recognizedWords = '';
         print(ChatInputCubit().searchController);
         TextToSpeechService.speak(text: AppStrings.anyTime);
       },
@@ -26,7 +27,7 @@ class ChatResponseScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text(
             "",
-            style: TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white),
           ),
         ),
         body: SafeArea(
@@ -71,6 +72,8 @@ class ResponseContainer extends StatelessWidget {
       builder: (context, state) => Container(
         padding: const EdgeInsets.all(16),
         decoration: const BoxDecoration(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(80), bottomRight: Radius.circular(80)),
           color: Color.fromARGB(255, 66, 233, 245),
           image: DecorationImage(
             image: AssetImage('assets/background.jpg'),
@@ -104,8 +107,8 @@ class ResponseContainer extends StatelessWidget {
                   type == 0
                       ? "Here's Your Enquiry!"
                       : type == 1
-                      ? "Here's Your Article!"
-                      : "Here's Your Answer!",
+                          ? "Here's Your Article!"
+                          : "Here's Your Answer!",
                   style: const TextStyle(fontSize: 24),
                 )
               ],
