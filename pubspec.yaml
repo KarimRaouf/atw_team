@@ -25,11 +25,15 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
 flutter:
+  fonts:
+    - family: Gabarito
+      fonts:
+        - asset: assets/fonts/Gabarito.ttf
+
   uses-material-design: true
   assets:
     - assets/
     - assets/atwlogo.png
-    - assets/micicon.svg
     - assets/background.jpg
     
 

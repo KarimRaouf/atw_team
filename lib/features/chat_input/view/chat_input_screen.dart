@@ -147,40 +147,9 @@ class ChatInputScreen extends StatelessWidget {
                           const SizedBox(
                             width: 30,
                           ),
-                          // Container(
-                          //   width: 70,
-                          //   height: 50,
-                          //   decoration: ShapeDecoration(
-                          //     shape: RoundedRectangleBorder(
-                          //       side: const BorderSide(
-                          //           width: 1,
-                          //           color: Color.fromARGB(255, 95, 205, 248)),
-                          //       borderRadius: BorderRadius.circular(11),
-                          //     ),
-                          //   ),
-                          // ),
                         ],
                       ),
                     ),
-                    // ListView.separated(
-                    //   shrinkWrap: true,
-                    //   physics: const NeverScrollableScrollPhysics(),
-                    //   itemCount: cubit.items.length,
-                    //   itemBuilder: (context, index) {
-                    //     var type = cubit.items[index];
-                    //     return ArticleTypeContainer(
-                    //       iconPath: type['iconPath']!,
-                    //       type: type['text']!,
-                    //       onTap: () {
-                    //         cubit.selectType(index);
-                    //       },
-                    //       isSelected: cubit.SelectedIndex == index,
-                    //     );
-                    //   },
-                    //   separatorBuilder: (BuildContext context, int index) {
-                    //     return const SizedBox(height: 32);
-                    //   },
-                    // ),
                     const SizedBox(height: 60),
                     GenerateButton(
                       isLoading: state is ResponseLoadingState,
@@ -225,14 +194,3 @@ class ChatInputScreen extends StatelessWidget {
     );
   }
 }
-
-//     cubit.fetchApiData(cubit.searchController.text);
-// =======
-//                             if (cubit.SelectedIndex == 0) {
-//                               cubit.fetchApiData(cubit.searchController.text);
-//                             } else if (cubit.SelectedIndex == 1) {
-//                               cubit.fetchHrDocumentQuestion(
-//                                   'Who is the most absences employee?');
-//                             } else {
-//                               cubit.requestChatGPT();
-//                             }

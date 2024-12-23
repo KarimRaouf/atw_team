@@ -10,6 +10,8 @@ import 'package:mkag/shared/services/speech_to_text_service.dart';
 import 'package:mkag/shared/services/text_to_speech_service.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 
+import 'features/chat_input/view/home_landing_view.dart';
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(
@@ -28,12 +30,8 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
+    return BlocProvider(
           create: (context) => ChatInputCubit(),
-        ),
-      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
@@ -57,7 +55,7 @@ class MainApp extends StatelessWidget {
             elevation: 0,
           ),
         ),
-        home: SplashScreen(),
+        home: HomeLandingView(),
       ),
     );
   }
