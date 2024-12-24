@@ -17,6 +17,7 @@ class AppUI {
   static Color green66 = const Color(0xFF66B266);
   static Color red2F = const Color(0xFFC02F2F);
   static Color grey83 = const Color(0xFF808683);
+  static Color green9B = const Color(0xFF40F99B);
   static Color darkGreen42 = const Color(0xFF254642);
   static Color greyD0 = const Color(0xFFC0C9D0);
 

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mkag/features/chat_input/view/path_finder_view.dart';
 import 'package:mkag/features/chat_input/view/widgets/ball_tile_component.dart';
 import 'package:mkag/generated/assets.dart';
-import 'package:mkag/shared/widgets/custom_text_field.dart';
+import 'package:mkag/shared/utils/app_utils.dart';
 
-import '../../../shared/utils/app_ui.dart';
+import 'article_generator.dart';
+import 'curriculum_view.dart';
+
 
 class HomeLandingView extends StatelessWidget {
   const HomeLandingView({super.key});
@@ -28,9 +31,15 @@ class HomeLandingView extends StatelessWidget {
                   const SizedBox(height: 30,),
                   SvgPicture.asset(Assets.assetsAtLogo,height: 80,),
                   const SizedBox(height: 30,),
-                  BallTileComponent(icon: Icons.article_outlined, title: 'Article Generator',onPress: (){},),
-                  BallTileComponent(icon: Icons.find_in_page, title: 'Doc Search',onPress: (){}),
-                  BallTileComponent(icon: Icons.lan_outlined, title: 'Path Finder',onPress: (){},)
+                  BallTileComponent(icon: Icons.article_outlined, title: 'Article Generator',onPress: (){
+                    AppUtil.mainNavigator(context, const ArticleGeneratorScreen());
+                  },),
+                  BallTileComponent(icon: Icons.find_in_page, title: 'Curriculum',onPress: (){
+                    AppUtil.mainNavigator(context, const CurriculumScreen());
+                  }),
+                  BallTileComponent(icon: Icons.lan_outlined, title: 'Path Finder',onPress: (){
+                    AppUtil.mainNavigator(context, const PathFinderScreen());
+                  },)
                   // CustomTextField(
                   //   borderColor: const Color(0xFF40F99B),
                   //   fillColor: AppUI.greyD9,
